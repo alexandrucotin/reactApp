@@ -3,7 +3,6 @@ import { Link } from "@reach/router";
 
 import Button from "react-bulma-components/lib/components/button";
 import Columns from "react-bulma-components/lib/components/columns";
-import Media from "react-bulma-components/lib/components/media";
 import Box from "react-bulma-components/lib/components/box";
 import Heading from "react-bulma-components/lib/components/heading";
 
@@ -28,9 +27,9 @@ class Pet extends React.Component {
               <p> Animal: {animal} </p>
               <p> Breed: {breed} </p>
               <p> Location: {location} </p>
-              <button className="button is-primary" type="button">
+              <Button className="button is-primary" type="button">
                 Show More
-              </button>
+              </Button>
             </div>
           </Box>
         </Columns.Column>

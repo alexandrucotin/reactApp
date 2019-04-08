@@ -31232,240 +31232,7 @@ require('./columns.sass');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./columns":"../node_modules/react-bulma-components/lib/components/columns/columns.js","./columns.sass":"../node_modules/react-bulma-components/lib/components/columns/columns.sass"}],"../node_modules/react-bulma-components/lib/components/media/components/media-item.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames2 = require('classnames');
-
-var _classnames3 = _interopRequireDefault(_classnames2);
-
-var _modifiers = require('../../../modifiers');
-
-var _modifiers2 = _interopRequireDefault(_modifiers);
-
-var _element = require('../../element');
-
-var _element2 = _interopRequireDefault(_element);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var MediaItem = function MediaItem(_ref) {
-  var children = _ref.children,
-      className = _ref.className,
-      position = _ref.position,
-      props = _objectWithoutProperties(_ref, ['children', 'className', 'position']);
-
-  var p = position === 'center' ? 'content' : position;
-  return _react2.default.createElement(
-    _element2.default,
-    _extends({}, props, {
-      className: (0, _classnames3.default)(className, _defineProperty({}, 'media-' + p, p))
-    }),
-    children
-  );
-};
-
-MediaItem.propTypes = _extends({}, _modifiers2.default.propTypes, {
-  children: _propTypes2.default.node,
-  className: _propTypes2.default.string,
-  style: _propTypes2.default.shape({}),
-  renderAs: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
-  position: _propTypes2.default.oneOf(['center', 'right', 'left'])
-});
-
-MediaItem.defaultProps = _extends({}, _modifiers2.default.defaultProps, {
-  children: null,
-  className: '',
-  style: {},
-  renderAs: 'div',
-  position: 'center'
-});
-
-exports.default = MediaItem;
-
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","classnames":"../node_modules/classnames/index.js","../../../modifiers":"../node_modules/react-bulma-components/lib/modifiers/index.js","../../element":"../node_modules/react-bulma-components/lib/components/element/index.js"}],"../node_modules/react-bulma-components/lib/components/media/components/media-content.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _modifiers = require('../../../modifiers');
-
-var _modifiers2 = _interopRequireDefault(_modifiers);
-
-var _element = require('../../element');
-
-var _element2 = _interopRequireDefault(_element);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var MediaContent = function MediaContent(_ref) {
-  var children = _ref.children,
-      className = _ref.className,
-      props = _objectWithoutProperties(_ref, ['children', 'className']);
-
-  return _react2.default.createElement(
-    _element2.default,
-    _extends({}, props, {
-      className: (0, _classnames2.default)(className, 'content')
-    }),
-    children
-  );
-};
-
-MediaContent.propTypes = _extends({}, _modifiers2.default.propTypes, {
-  children: _propTypes2.default.node,
-  className: _propTypes2.default.string,
-  style: _propTypes2.default.shape({}),
-  renderAs: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
-});
-
-MediaContent.defaultProps = _extends({}, _modifiers2.default.defaultProps, {
-  children: null,
-  className: '',
-  style: {},
-  renderAs: 'div'
-});
-
-exports.default = MediaContent;
-
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","classnames":"../node_modules/classnames/index.js","../../../modifiers":"../node_modules/react-bulma-components/lib/modifiers/index.js","../../element":"../node_modules/react-bulma-components/lib/components/element/index.js"}],"../node_modules/react-bulma-components/lib/components/media/media.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _mediaItem = require('./components/media-item');
-
-var _mediaItem2 = _interopRequireDefault(_mediaItem);
-
-var _mediaContent = require('./components/media-content');
-
-var _mediaContent2 = _interopRequireDefault(_mediaContent);
-
-var _modifiers = require('../../modifiers');
-
-var _modifiers2 = _interopRequireDefault(_modifiers);
-
-var _element = require('../element');
-
-var _element2 = _interopRequireDefault(_element);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-var Media = function Media(_ref) {
-  var children = _ref.children,
-      className = _ref.className,
-      props = _objectWithoutProperties(_ref, ['children', 'className']);
-
-  return _react2.default.createElement(
-    _element2.default,
-    _extends({}, props, {
-      className: (0, _classnames2.default)('media', className, {})
-    }),
-    children
-  );
-};
-Media.Item = _mediaItem2.default;
-
-Media.Content = _mediaContent2.default;
-
-Media.propTypes = _extends({}, _modifiers2.default.propTypes, {
-  children: _propTypes2.default.node,
-  className: _propTypes2.default.string,
-  style: _propTypes2.default.shape({}),
-  renderAs: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
-});
-
-Media.defaultProps = _extends({}, _modifiers2.default.defaultProps, {
-  children: null,
-  className: '',
-  style: {},
-  renderAs: 'article'
-});
-
-exports.default = Media;
-
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","classnames":"../node_modules/classnames/index.js","./components/media-item":"../node_modules/react-bulma-components/lib/components/media/components/media-item.js","./components/media-content":"../node_modules/react-bulma-components/lib/components/media/components/media-content.js","../../modifiers":"../node_modules/react-bulma-components/lib/modifiers/index.js","../element":"../node_modules/react-bulma-components/lib/components/element/index.js"}],"../node_modules/react-bulma-components/lib/components/media/media.sass":[function(require,module,exports) {
-
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/react-bulma-components/lib/components/media/index.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _media = require('./media');
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_media).default;
-  }
-});
-
-require('./media.sass');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-},{"./media":"../node_modules/react-bulma-components/lib/components/media/media.js","./media.sass":"../node_modules/react-bulma-components/lib/components/media/media.sass"}],"../node_modules/react-bulma-components/lib/components/box/box.js":[function(require,module,exports) {
+},{"./columns":"../node_modules/react-bulma-components/lib/components/columns/columns.js","./columns.sass":"../node_modules/react-bulma-components/lib/components/columns/columns.sass"}],"../node_modules/react-bulma-components/lib/components/box/box.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31682,8 +31449,6 @@ var _button = _interopRequireDefault(require("react-bulma-components/lib/compone
 
 var _columns = _interopRequireDefault(require("react-bulma-components/lib/components/columns"));
 
-var _media = _interopRequireDefault(require("react-bulma-components/lib/components/media"));
-
 var _box = _interopRequireDefault(require("react-bulma-components/lib/components/box"));
 
 var _heading = _interopRequireDefault(require("react-bulma-components/lib/components/heading"));
@@ -31747,7 +31512,7 @@ function (_React$Component) {
         alt: name
       })), _react.default.createElement("div", null, _react.default.createElement(_heading.default, {
         size: 4
-      }, name.toUpperCase()), _react.default.createElement("p", null, " Animal: ", animal, " "), _react.default.createElement("p", null, " Breed: ", breed, " "), _react.default.createElement("p", null, " Location: ", location, " "), _react.default.createElement("button", {
+      }, name.toUpperCase()), _react.default.createElement("p", null, " Animal: ", animal, " "), _react.default.createElement("p", null, " Breed: ", breed, " "), _react.default.createElement("p", null, " Location: ", location, " "), _react.default.createElement(_button.default, {
         className: "button is-primary",
         type: "button"
       }, "Show More")))));
@@ -31759,7 +31524,7 @@ function (_React$Component) {
 
 var _default = Pet;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-bulma-components/lib/components/button":"../node_modules/react-bulma-components/lib/components/button/index.js","react-bulma-components/lib/components/columns":"../node_modules/react-bulma-components/lib/components/columns/index.js","react-bulma-components/lib/components/media":"../node_modules/react-bulma-components/lib/components/media/index.js","react-bulma-components/lib/components/box":"../node_modules/react-bulma-components/lib/components/box/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js"}],"Results.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-bulma-components/lib/components/button":"../node_modules/react-bulma-components/lib/components/button/index.js","react-bulma-components/lib/components/columns":"../node_modules/react-bulma-components/lib/components/columns/index.js","react-bulma-components/lib/components/box":"../node_modules/react-bulma-components/lib/components/box/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js"}],"Results.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31932,17 +31697,30 @@ function (_React$Component) {
   _createClass(Details, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       petfinder.pet.get({
         output: "full",
         id: this.props.id
       }).then(function (data) {
+        var pet = data.petfinder.pet;
         var breed;
 
-        if (Array.IsArray(data.petfinder.pet.breeds.breed)) {
-          breed = data.petfinder.pet.breeds.breed.join(", ");
+        if (Array.IsArray(pet.breeds.breed)) {
+          breed = pet.breeds.breed.join(", ");
         } else {
-          breed = data.petfinder.pet.breeds.breed;
+          breed = pet.breeds.breed;
         }
+
+        _this2.setState({
+          name: pet.name,
+          animal: pet.animal,
+          location: "".concat(pet.contact.city, ", ").concat(pet.contact.state),
+          description: pet.description,
+          media: pet.media,
+          breed: breed,
+          loading: false
+        });
       });
     }
   }, {

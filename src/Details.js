@@ -23,12 +23,23 @@ class Details extends React.Component {
         id: this.props.id
       })
       .then(data => {
+        const pet = data.petfinder.pet;
         let breed;
-        if (Array.IsArray(data.petfinder.pet.breeds.breed)) {
-          breed = data.petfinder.pet.breeds.breed.join(", ");
+        if (Array.IsArray(pet.breeds.breed)) {
+          breed = pet.breeds.breed.join(", ");
         } else {
-          breed = data.petfinder.pet.breeds.breed;
+          breed = pet.breeds.breed;
         }
+
+        this.setState({
+          name: pet.name,
+          animal: pet.animal,
+          location: `${pet.contact.city}, ${pet.contact.state}`,
+          description: pet.description,
+          media: pet.media,
+          breed,
+          loading: false
+        });
       });
   }
   render() {
