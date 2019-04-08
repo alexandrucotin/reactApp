@@ -2,7 +2,6 @@ import React from "react";
 import pf from "petfinder-client";
 import Heading from "react-bulma-components/lib/components/heading";
 import { navigate } from "@reach/router";
-import Columns from "react-bulma-components/lib/components/columns";
 import Box from "react-bulma-components/lib/components/box";
 
 const petfinder = pf({
@@ -11,13 +10,9 @@ const petfinder = pf({
 });
 
 class Details extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: true
-    };
-  }
+  state = {
+    loading: true
+  };
 
   componentDidMount() {
     petfinder.pet
@@ -55,17 +50,15 @@ class Details extends React.Component {
     const { name, animal, breed, location, description } = this.state;
 
     return (
-      <Columns>
-        <Box>
-          <div>
-            <Heading size={4}>{name}</Heading>
-            <p> Animal: {animal} </p>
-            <p> Breed: {breed} </p>
-            <p> Location: {location} </p>
-            <p> {description} </p>
-          </div>
-        </Box>
-      </Columns>
+      <Box>
+        <div>
+          <Heading size={4}>{name}</Heading>
+          <p> Animal: {animal} </p>
+          <p> Breed: {breed} </p>
+          <p> Location: {location} </p>
+          <p> {description} </p>
+        </div>
+      </Box>
     );
   }
 }
