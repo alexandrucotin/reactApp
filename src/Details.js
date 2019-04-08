@@ -1,6 +1,9 @@
 import React from "react";
 import pf from "petfinder-client";
 import Heading from "react-bulma-components/lib/components/heading";
+import { navigate } from "@reach/router";
+import Columns from "react-bulma-components/lib/components/columns";
+import Box from "react-bulma-components/lib/components/box";
 
 const petfinder = pf({
   key: process.env.API_KEY,
@@ -23,27 +26,47 @@ class Details extends React.Component {
         id: this.props.id
       })
       .then(data => {
-        const pet = data.petfinder.pet;
         let breed;
-        if (Array.IsArray(pet.breeds.breed)) {
-          breed = pet.breeds.breed.join(", ");
+        if (Array.isArray(data.petfinder.pet.breeds.breed)) {
+          breed = data.petfinder.pet.breeds.breed.join(", ");
         } else {
-          breed = pet.breeds.breed;
+          breed = data.petfinder.pet.breeds.breed;
         }
-
         this.setState({
-          name: pet.name,
-          animal: pet.animal,
-          location: `${pet.contact.city}, ${pet.contact.state}`,
-          description: pet.description,
-          media: pet.media,
+          name: data.petfinder.pet.name,
+          animal: data.petfinder.pet.animal,
+          location: `${data.petfinder.pet.contact.city}, ${
+            data.petfinder.pet.contact.state
+          }`,
+          description: data.petfinder.pet.description,
+          media: data.petfinder.pet.media,
           breed,
           loading: false
         });
+      })
+      .catch(() => {
+        navigate("/");
       });
   }
   render() {
-    return <Heading size={4}> AnotherPage </Heading>;
+    if (this.state.loading) {
+      return <h1> Loading.. </h1>;
+    }
+    const { name, animal, breed, location, description } = this.state;
+
+    return (
+      <Columns>
+        <Box>
+          <div>
+            <Heading size={4}>{name}</Heading>
+            <p> Animal: {animal} </p>
+            <p> Breed: {breed} </p>
+            <p> Location: {location} </p>
+            <p> {description} </p>
+          </div>
+        </Box>
+      </Columns>
+    );
   }
 }
 

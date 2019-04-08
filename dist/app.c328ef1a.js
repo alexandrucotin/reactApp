@@ -31502,17 +31502,23 @@ function (_React$Component) {
         });
       }
 
-      return _react.default.createElement(_router.Link, {
-        to: "/details/".concat(id)
-      }, _react.default.createElement(_columns.default.Column, {
+      var hero = "http://placecorgi.com/300/300";
+
+      if (photos[0] && photos[0].value) {
+        hero = photos[0].value;
+      }
+
+      return _react.default.createElement(_columns.default.Column, {
         narrow: true,
         size: "one-quarter"
       }, _react.default.createElement(_box.default, null, _react.default.createElement("div", null, _react.default.createElement("img", {
-        src: photos[0].value,
+        src: hero,
         alt: name
       })), _react.default.createElement("div", null, _react.default.createElement(_heading.default, {
         size: 4
-      }, name.toUpperCase()), _react.default.createElement("p", null, " Animal: ", animal, " "), _react.default.createElement("p", null, " Breed: ", breed, " "), _react.default.createElement("p", null, " Location: ", location, " "), _react.default.createElement(_button.default, {
+      }, name.toUpperCase()), _react.default.createElement("p", null, " Animal: ", animal, " "), _react.default.createElement("p", null, " Breed: ", breed, " "), _react.default.createElement("p", null, " Location: ", location, " "), _react.default.createElement(_router.Link, {
+        to: "/details/".concat(id)
+      }, _react.default.createElement(_button.default, {
         className: "button is-primary",
         type: "button"
       }, "Show More")))));
@@ -31652,6 +31658,12 @@ var _petfinderClient = _interopRequireDefault(require("petfinder-client"));
 
 var _heading = _interopRequireDefault(require("react-bulma-components/lib/components/heading"));
 
+var _router = require("@reach/router");
+
+var _columns = _interopRequireDefault(require("react-bulma-components/lib/components/columns"));
+
+var _box = _interopRequireDefault(require("react-bulma-components/lib/components/box"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -31703,32 +31715,43 @@ function (_React$Component) {
         output: "full",
         id: this.props.id
       }).then(function (data) {
-        var pet = data.petfinder.pet;
         var breed;
 
-        if (Array.IsArray(pet.breeds.breed)) {
-          breed = pet.breeds.breed.join(", ");
+        if (Array.isArray(data.petfinder.pet.breeds.breed)) {
+          breed = data.petfinder.pet.breeds.breed.join(", ");
         } else {
-          breed = pet.breeds.breed;
+          breed = data.petfinder.pet.breeds.breed;
         }
 
         _this2.setState({
-          name: pet.name,
-          animal: pet.animal,
-          location: "".concat(pet.contact.city, ", ").concat(pet.contact.state),
-          description: pet.description,
-          media: pet.media,
+          name: data.petfinder.pet.name,
+          animal: data.petfinder.pet.animal,
+          location: "".concat(data.petfinder.pet.contact.city, ", ").concat(data.petfinder.pet.contact.state),
+          description: data.petfinder.pet.description,
+          media: data.petfinder.pet.media,
           breed: breed,
           loading: false
         });
+      }).catch(function () {
+        (0, _router.navigate)("/");
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement(_heading.default, {
+      if (this.state.loading) {
+        return _react.default.createElement("h1", null, " Loading.. ");
+      }
+
+      var _this$state = this.state,
+          name = _this$state.name,
+          animal = _this$state.animal,
+          breed = _this$state.breed,
+          location = _this$state.location,
+          description = _this$state.description;
+      return _react.default.createElement(_columns.default, null, _react.default.createElement(_box.default, null, _react.default.createElement("div", null, _react.default.createElement(_heading.default, {
         size: 4
-      }, " AnotherPage ");
+      }, name), _react.default.createElement("p", null, " Animal: ", animal, " "), _react.default.createElement("p", null, " Breed: ", breed, " "), _react.default.createElement("p", null, " Location: ", location, " "), _react.default.createElement("p", null, " ", description, " "))));
     }
   }]);
 
@@ -31737,7 +31760,7 @@ function (_React$Component) {
 
 var _default = Details;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js"}],"app.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-bulma-components/lib/components/columns":"../node_modules/react-bulma-components/lib/components/columns/index.js","react-bulma-components/lib/components/box":"../node_modules/react-bulma-components/lib/components/box/index.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

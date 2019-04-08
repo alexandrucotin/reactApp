@@ -15,25 +15,31 @@ class Pet extends React.Component {
     if (media && media.photos && media.photos.photo) {
       photos = media.photos.photo.filter(photo => photo["@size"] === "pn");
     }
+
+    let hero = "http://placecorgi.com/300/300";
+    if (photos[0] && photos[0].value) {
+      hero = photos[0].value;
+    }
+
     return (
-      <Link to={`/details/${id}`}>
-        <Columns.Column narrow size="one-quarter">
-          <Box>
-            <div>
-              <img src={photos[0].value} alt={name} />
-            </div>
-            <div>
-              <Heading size={4}>{name.toUpperCase()}</Heading>
-              <p> Animal: {animal} </p>
-              <p> Breed: {breed} </p>
-              <p> Location: {location} </p>
+      <Columns.Column narrow size="one-quarter">
+        <Box>
+          <div>
+            <img src={hero} alt={name} />
+          </div>
+          <div>
+            <Heading size={4}>{name.toUpperCase()}</Heading>
+            <p> Animal: {animal} </p>
+            <p> Breed: {breed} </p>
+            <p> Location: {location} </p>
+            <Link to={`/details/${id}`}>
               <Button className="button is-primary" type="button">
                 Show More
               </Button>
-            </div>
-          </Box>
-        </Columns.Column>
-      </Link>
+            </Link>
+          </div>
+        </Box>
+      </Columns.Column>
     );
   }
 }
