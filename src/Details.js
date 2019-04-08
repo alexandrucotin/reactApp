@@ -3,6 +3,7 @@ import pf from "petfinder-client";
 import Heading from "react-bulma-components/lib/components/heading";
 import { navigate } from "@reach/router";
 import Box from "react-bulma-components/lib/components/box";
+import Carousel from "./Carousel";
 
 const petfinder = pf({
   key: process.env.API_KEY,
@@ -47,10 +48,11 @@ class Details extends React.Component {
     if (this.state.loading) {
       return <h1> Loading.. </h1>;
     }
-    const { name, animal, breed, location, description } = this.state;
+    const { name, animal, breed, location, description, media } = this.state;
 
     return (
       <Box>
+        <Carousel media={media} />
         <div>
           <Heading size={4}>{name}</Heading>
           <p> Animal: {animal} </p>
