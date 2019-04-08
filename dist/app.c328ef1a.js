@@ -31465,165 +31465,7 @@ require('./media.sass');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./media":"../node_modules/react-bulma-components/lib/components/media/media.js","./media.sass":"../node_modules/react-bulma-components/lib/components/media/media.sass"}],"../node_modules/react-bulma-components/lib/components/image/constants.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  SIZES: [16, 24, 32, 48, 64, 96, 128, 'square', '1by1', '4by3', '3by2', '16by9', '2by1', '5by4', '5by3', '3by1', '4by5', '3by4', '2by3', '3by5', '9by16', '1by2', '1by3']
-};
-
-},{}],"../node_modules/react-bulma-components/lib/components/image/image.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _classnames2 = require('classnames');
-
-var _classnames3 = _interopRequireDefault(_classnames2);
-
-var _constants = require('./constants');
-
-var _constants2 = _interopRequireDefault(_constants);
-
-var _modifiers = require('../../modifiers');
-
-var _modifiers2 = _interopRequireDefault(_modifiers);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Image = function (_PureComponent) {
-  _inherits(Image, _PureComponent);
-
-  function Image() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Image);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Image.__proto__ || Object.getPrototypeOf(Image)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this.onError = function () {
-      _this.setState({
-        src: _this.props.fallback
-      });
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Image, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          className = _props.className,
-          alt = _props.alt,
-          size = _props.size,
-          fallback = _props.fallback,
-          src = _props.src,
-          allProps = _objectWithoutProperties(_props, ['className', 'alt', 'size', 'fallback', 'src']);
-
-      var props = _modifiers2.default.clean(allProps);
-      var s = size;
-
-      if (typeof size === 'number') {
-        s = s + 'x' + s;
-      }
-
-      return _react2.default.createElement(
-        'figure',
-        _extends({}, props, {
-          className: (0, _classnames3.default)('image', className, _defineProperty({}, 'is-' + s, s))
-        }),
-        _react2.default.createElement('img', { onError: this.onError, src: this.state.src, alt: alt })
-      );
-    }
-  }]);
-
-  return Image;
-}(_react.PureComponent);
-
-Image.propTypes = _extends({}, _modifiers2.default.propTypes, {
-  className: _propTypes2.default.string,
-  src: _propTypes2.default.string,
-  alt: _propTypes2.default.string,
-  style: _propTypes2.default.shape({}),
-  size: _propTypes2.default.oneOf(_constants2.default.SIZES),
-  fallback: _propTypes2.default.string
-});
-Image.defaultProps = _extends({}, _modifiers2.default.defaultProps, {
-  className: '',
-  src: '',
-  alt: '',
-  style: {},
-  size: null,
-  fallback: 'http//bulma.io/images/placeholders/480x480.png'
-});
-
-Image.getDerivedStateFromProps = function (props, state) {
-  return {
-    src: state.default !== props.src ? props.src : state.src,
-    default: props.src
-  };
-};
-
-exports.default = Image;
-
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","classnames":"../node_modules/classnames/index.js","./constants":"../node_modules/react-bulma-components/lib/components/image/constants.js","../../modifiers":"../node_modules/react-bulma-components/lib/modifiers/index.js"}],"../node_modules/react-bulma-components/lib/components/image/image.sass":[function(require,module,exports) {
-
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/react-bulma-components/lib/components/image/index.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _image = require('./image');
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_image).default;
-  }
-});
-
-require('./image.sass');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-},{"./image":"../node_modules/react-bulma-components/lib/components/image/image.js","./image.sass":"../node_modules/react-bulma-components/lib/components/image/image.sass"}],"../node_modules/react-bulma-components/lib/components/box/box.js":[function(require,module,exports) {
+},{"./media":"../node_modules/react-bulma-components/lib/components/media/media.js","./media.sass":"../node_modules/react-bulma-components/lib/components/media/media.sass"}],"../node_modules/react-bulma-components/lib/components/box/box.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31834,13 +31676,13 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _router = require("@reach/router");
+
 var _button = _interopRequireDefault(require("react-bulma-components/lib/components/button"));
 
 var _columns = _interopRequireDefault(require("react-bulma-components/lib/components/columns"));
 
 var _media = _interopRequireDefault(require("react-bulma-components/lib/components/media"));
-
-var _image = _interopRequireDefault(require("react-bulma-components/lib/components/image"));
 
 var _box = _interopRequireDefault(require("react-bulma-components/lib/components/box"));
 
@@ -31885,7 +31727,8 @@ function (_React$Component) {
           animal = _this$props.animal,
           breed = _this$props.breed,
           media = _this$props.media,
-          location = _this$props.location;
+          location = _this$props.location,
+          id = _this$props.id;
       var photos = [];
 
       if (media && media.photos && media.photos.photo) {
@@ -31894,7 +31737,9 @@ function (_React$Component) {
         });
       }
 
-      return _react.default.createElement(_columns.default.Column, {
+      return _react.default.createElement(_router.Link, {
+        to: "/details/".concat(id)
+      }, _react.default.createElement(_columns.default.Column, {
         narrow: true,
         size: "one-quarter"
       }, _react.default.createElement(_box.default, null, _react.default.createElement("div", null, _react.default.createElement("img", {
@@ -31905,7 +31750,7 @@ function (_React$Component) {
       }, name.toUpperCase()), _react.default.createElement("p", null, " Animal: ", animal, " "), _react.default.createElement("p", null, " Breed: ", breed, " "), _react.default.createElement("p", null, " Location: ", location, " "), _react.default.createElement("button", {
         className: "button is-primary",
         type: "button"
-      }, "Show More"))));
+      }, "Show More")))));
     }
   }]);
 
@@ -31914,7 +31759,7 @@ function (_React$Component) {
 
 var _default = Pet;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-bulma-components/lib/components/button":"../node_modules/react-bulma-components/lib/components/button/index.js","react-bulma-components/lib/components/columns":"../node_modules/react-bulma-components/lib/components/columns/index.js","react-bulma-components/lib/components/media":"../node_modules/react-bulma-components/lib/components/media/index.js","react-bulma-components/lib/components/image":"../node_modules/react-bulma-components/lib/components/image/index.js","react-bulma-components/lib/components/box":"../node_modules/react-bulma-components/lib/components/box/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js"}],"Results.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","react-bulma-components/lib/components/button":"../node_modules/react-bulma-components/lib/components/button/index.js","react-bulma-components/lib/components/columns":"../node_modules/react-bulma-components/lib/components/columns/index.js","react-bulma-components/lib/components/media":"../node_modules/react-bulma-components/lib/components/media/index.js","react-bulma-components/lib/components/box":"../node_modules/react-bulma-components/lib/components/box/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js"}],"Results.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31929,8 +31774,6 @@ var _petfinderClient = _interopRequireDefault(require("petfinder-client"));
 var _Pet = _interopRequireDefault(require("./Pet"));
 
 var _columns = _interopRequireDefault(require("react-bulma-components/lib/components/columns"));
-
-var _heading = _interopRequireDefault(require("react-bulma-components/lib/components/heading"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32007,7 +31850,7 @@ function (_React$Component) {
         var breed;
 
         if (Array.isArray(pet.breeds.breed)) {
-          breed = pet.breeds.breed.join(",");
+          breed = pet.breeds.breed.join(", ");
         } else {
           breed = pet.breeds.breed;
         }
@@ -32018,7 +31861,8 @@ function (_React$Component) {
           name: pet.name,
           breed: breed,
           media: pet.media,
-          location: "".concat(pet.contact.city, ", ").concat(pet.contact.state)
+          location: "".concat(pet.contact.city, ", ").concat(pet.contact.state),
+          id: pet.id
         });
       }));
     }
@@ -32029,7 +31873,7 @@ function (_React$Component) {
 
 var _default = Results;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","./Pet":"Pet.js","react-bulma-components/lib/components/columns":"../node_modules/react-bulma-components/lib/components/columns/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js"}],"Details.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","./Pet":"Pet.js","react-bulma-components/lib/components/columns":"../node_modules/react-bulma-components/lib/components/columns/index.js"}],"Details.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32038,6 +31882,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
+
+var _petfinderClient = _interopRequireDefault(require("petfinder-client"));
 
 var _heading = _interopRequireDefault(require("react-bulma-components/lib/components/heading"));
 
@@ -32061,18 +31907,45 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var petfinder = (0, _petfinderClient.default)({
+  key: "mucDz0sdmZnNqa0nXuj7EkO1qKS0PKndJkIhzq2cn6FrddB6eA",
+  secret: "ZEM8uI3kf4Gw79DsDEoZxwGFpKLEJCer1YaifikC"
+});
+
 var Details =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(Details, _React$Component);
 
-  function Details() {
+  function Details(props) {
+    var _this;
+
     _classCallCheck(this, Details);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Details).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Details).call(this, props));
+    _this.state = {
+      loading: true
+    };
+    return _this;
   }
 
   _createClass(Details, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      petfinder.pet.get({
+        output: "full",
+        id: this.props.id
+      }).then(function (data) {
+        var breed;
+
+        if (Array.IsArray(data.petfinder.pet.breeds.breed)) {
+          breed = data.petfinder.pet.breeds.breed.join(", ");
+        } else {
+          breed = data.petfinder.pet.breeds.breed;
+        }
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement(_heading.default, {
@@ -32086,7 +31959,7 @@ function (_React$Component) {
 
 var _default = Details;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js"}],"app.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","react-bulma-components/lib/components/heading":"../node_modules/react-bulma-components/lib/components/heading/index.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -32137,7 +32010,9 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", null, _react.default.createElement(_heading.default, {
         size: 4
-      }, " Homepage "), _react.default.createElement(_router.Router, null, _react.default.createElement(_Results.default, {
+      }, " ", _react.default.createElement(_router.Link, {
+        to: "/"
+      }, "Homepage "), " "), _react.default.createElement(_router.Router, null, _react.default.createElement(_Results.default, {
         path: "/"
       }), _react.default.createElement(_Details.default, {
         path: "/details/:id"
@@ -32177,7 +32052,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61676" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64278" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
