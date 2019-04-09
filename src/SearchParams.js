@@ -90,8 +90,16 @@ class SearchParams extends React.Component {
             onChange={this.handleBreedChange}
             onBlur={this.handleBreedChange}
             disabled={!this.state.breeds.length}
-          />
+          >
+            <option />
+            {this.state.breeds.map(breed => (
+              <option key={breed} value={breed}>
+                {breed}
+              </option>
+            ))}
+          </select>
         </label>
+        <button> Submit</button>
       </div>
     );
   }
