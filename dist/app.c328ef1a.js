@@ -31951,65 +31951,12 @@ function (_React$Component) {
   _inherits(SearchParams, _React$Component);
 
   function SearchParams() {
-    var _getPrototypeOf2;
-
-    var _this;
-
-    var _temp;
-
     _classCallCheck(this, SearchParams);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SearchParams)).call.apply(_getPrototypeOf2, [this].concat(args))), _this.state = {
-      location: "Seattle, WA",
-      animal: "",
-      breed: "",
-      breeds: []
-    }, _this.handleLocationChange = function (event) {
-      _this.setState({
-        location: event.target.value
-      });
-    }, _this.handleAnimalChange = function (event) {
-      _this.setState({
-        animal: event.target.value,
-        breed: ""
-      }, _this.getBreeds);
-    }, _this.handleBreedChange = function (event) {
-      _this.setState({
-        breed: event.target.value
-      });
-    }, _temp));
+    return _possibleConstructorReturn(this, _getPrototypeOf(SearchParams).apply(this, arguments));
   }
 
   _createClass(SearchParams, [{
-    key: "getBreeds",
-    value: function getBreeds() {
-      var _this2 = this;
-
-      if (this.state.animal) {
-        petfinder.breed.list({
-          animal: this.state.animal
-        }).then(function (data) {
-          if (data.petfinder && data.petfinder.breeds && Array.isArray(data.petfinder.breeds.breed)) {
-            _this2.setState({
-              breeds: data.petfinder.breeds.breed
-            });
-          } else {
-            _this2.setState({
-              breeds: []
-            });
-          }
-        });
-      } else {
-        this.setState({
-          breeds: []
-        });
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("div", {
@@ -32101,26 +32048,86 @@ var App =
 function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+
+    _this.handleLocationChange = function (event) {
+      _this.setState({
+        location: event.target.value
+      });
+    };
+
+    _this.handleAnimalChange = function (event) {
+      _this.setState({
+        animal: event.target.value,
+        breed: ""
+      }, _this.getBreeds);
+    };
+
+    _this.handleBreedChange = function (event) {
+      _this.setState({
+        breed: event.target.value
+      });
+    };
+
+    _this.state = {
+      location: "Seattle, WA",
+      animal: "",
+      breed: "",
+      breeds: [],
+      handleAnimalChange: _this.handleAnimalChange,
+      handleBreedChange: _this.handleBreedChange,
+      handleLocationChange: _this.handleLocationChange,
+      getBreeds: _this.getBreeds
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: "getBreeds",
+    value: function getBreeds() {
+      var _this2 = this;
+
+      if (this.state.animal) {
+        petfinder.breed.list({
+          animal: this.state.animal
+        }).then(function (data) {
+          if (data.petfinder && data.petfinder.breeds && Array.isArray(data.petfinder.breeds.breed)) {
+            _this2.setState({
+              breeds: data.petfinder.breeds.breed
+            });
+          } else {
+            _this2.setState({
+              breeds: []
+            });
+          }
+        });
+      } else {
+        this.setState({
+          breeds: []
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("div", null, _react.default.createElement(_heading.default, {
         size: 4
       }, " ", _react.default.createElement(_router.Link, {
         to: "/"
-      }, "Homepage "), " "), _react.default.createElement(_router.Router, null, _react.default.createElement(_Results.default, {
+      }, "Homepage "), " "), _react.default.createElement(_SearchContext.Provider, {
+        value: this.state
+      }, _react.default.createElement(_router.Router, null, _react.default.createElement(_Results.default, {
         path: "/"
       }), _react.default.createElement(_Details.default, {
         path: "/details/:id"
       }), _react.default.createElement(_SearchParams.default, {
         path: "/search-params"
-      })));
+      }))));
     }
   }]);
 
