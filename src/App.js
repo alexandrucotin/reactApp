@@ -1,6 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
+import pf from "petfinder-client";
+import { Provider } from "./SearchContext";
 import Results from "./Results";
 import Heading from "react-bulma-components/lib/components/heading";
 import Details from "./Details";
