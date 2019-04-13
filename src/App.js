@@ -8,6 +8,11 @@ import Heading from "react-bulma-components/lib/components/heading";
 import Details from "./Details";
 import SearchParams from "./SearchParams";
 
+const petfinder = pf({
+  key: process.env.API_KEY,
+  secret: process.env.API_SECRET
+});
+
 class App extends React.Component {
   constructor(props) {
     super(props);

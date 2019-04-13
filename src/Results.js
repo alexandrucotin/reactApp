@@ -1,6 +1,7 @@
 import React from "react";
 import pf from "petfinder-client";
 import Pet from "./Pet";
+import SearchBox from "./SearchBox";
 import Columns from "react-bulma-components/lib/components/columns";
 
 const petfinder = pf({
@@ -39,6 +40,7 @@ class Results extends React.Component {
   render() {
     return (
       <Columns>
+        <SearchBox />
         {this.state.pets.map(pet => {
           let breed;
           if (Array.isArray(pet.breeds.breed)) {
